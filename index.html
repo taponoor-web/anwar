@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
     <!-- Google tag (gtag.js) - كود التتبع الجديد -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17064303190"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18200867350"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'AW-17064303190');
+      gtag('config', 'AW-18200867350');
     </script>
 
     <!-- Event snippet for نقرة صادرة إلى الخارج (1) conversion page -->
@@ -22,7 +22,7 @@
         }
       };
       gtag('event', 'conversion', {
-          'send_to': 'AW-17064303190/JbBTCNaLkrocENa08sg_',
+          'send_to': 'AW-18200867350/qRC6CKCtlrocEJbk7OZD',
           'event_callback': callback
       });
       return false;
@@ -804,20 +804,15 @@
             if (!button) return;
             
             button.addEventListener('click', function(e) {
-                if (isIOS()) {
-                    if (typeof gtag_report_conversion === 'function') {
-                        gtag_report_conversion(phoneUrl);
-                    }
-                    return true;
+                // استدعاء دالة التحويل قبل التوجيه
+                if (typeof gtag_report_conversion === 'function') {
+                    gtag_report_conversion(phoneUrl);
                 } else {
-                    e.preventDefault();
-                    if (typeof gtag_report_conversion === 'function') {
-                        gtag_report_conversion(phoneUrl);
-                    } else {
-                        window.location.href = phoneUrl;
-                    }
-                    return false;
+                    // إذا لم توجد الدالة ننتقل مباشرة
+                    window.location.href = phoneUrl;
                 }
+                e.preventDefault();
+                return false;
             });
         }
         
